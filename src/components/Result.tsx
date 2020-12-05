@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { gql, useQuery } from "@apollo/client";
+import ResultItem from './ResultItem/ResultItem';
 
 // const TOP_ISSUES = gql`
 //     query {
@@ -19,10 +20,19 @@ import { gql, useQuery } from "@apollo/client";
 const REACT_ISSUES = gql`
     query {
         repository(owner: "facebook", name: "react") {
-            issues(last: 5, states:OPEN) {
+            issues(last: 10, states:OPEN, orderBy: {field: CREATED_AT, direction: DESC}) {
                 nodes {
                     title
                     bodyText
+                    number
+                    labels(first: 3) {
+                        edges {
+                            node {
+                                name
+                                color
+                            }
+                        }
+                    }
                 } 
             }
         }
@@ -30,26 +40,27 @@ const REACT_ISSUES = gql`
 `
 
 interface RepositoryData {
-    repository: {createdAt: number, issues : {nodes: [Issue]}}
+    repository: {issues : {nodes: [Issue]}}
 }
 
 interface Issue {
     title: string;
     bodyText: string;
+    number: number;
+    labels: {edges: Label[]};
+}
+
+interface Label {
+    node: {name: string, color: string}
 }
 
 function Result() {
     const {loading, error, data} = useQuery<RepositoryData, Issue>(REACT_ISSUES);
     if(loading) return <p>Chotto matte</p>
     if (error) return <p>ERROR {error}</p>
-    
+    console.log(data)
     return data?.repository?.issues?.nodes?.map(issue => (
-        <>
-            <div>TITLE: {issue.title}</div>
-            <p></p>
-            <div>{issue.bodyText}</div>
-            <p>=================================================</p>
-        </>
+        <ResultItem issue={issue} />
     ))
 }
 
