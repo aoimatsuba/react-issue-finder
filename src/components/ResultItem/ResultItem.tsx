@@ -23,7 +23,7 @@ function ResultItem(props: Props) {
             <Card.Body>
                 <Card.Title>{props.issue.title}</Card.Title>
                 <Card.Text>{props.issue.bodyText}</Card.Text>
-            <button type="button" className="btn btn-primary btn-sm">Small button</button>
+            <button type="button" className="btn btn-primary btn-sm">Expand Detail</button>
             </Card.Body>
         </Card>
         </div>
