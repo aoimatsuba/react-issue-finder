@@ -1,8 +1,11 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
+import {Provider} from 'react-redux'
 import App from "./App";
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from "@apollo/client";
 import {setContext} from '@apollo/client/link/context'
+import { createStore } from "redux";
+import store from "./redux/store";
 
 const httpLink = createHttpLink({
   uri: "https://api.github.com/graphql",
@@ -22,12 +25,15 @@ const client = new ApolloClient({
   cache: new InMemoryCache()
 });
 
+
 ReactDOM.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <React.StrictMode>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </React.StrictMode>
+  </Provider>,
   document.getElementById("root")
 );
 

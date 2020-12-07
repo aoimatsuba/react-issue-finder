@@ -58,7 +58,6 @@ function Result() {
     const {loading, error, data} = useQuery<RepositoryData, Issue>(REACT_ISSUES);
     if(loading) return <p>Chotto matte</p>
     if (error) return <p>ERROR {error}</p>
-    console.log(data)
     return data?.repository?.issues?.nodes?.map(issue => (
         <ResultItem issue={issue} />
     ))
