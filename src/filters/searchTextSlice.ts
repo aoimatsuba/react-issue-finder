@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-const initialState = 'This is initial state'
+const initialState = ''
 const searchTextSlice = createSlice({
     name: 'searchTextFilter',
     initialState,

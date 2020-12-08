@@ -15,7 +15,6 @@ const StatusFilter =() => {
         dispatch(setIssueStatus({open, closed}))
     })
 
-    console.log("rendering: " + open)
     return (
         <Dropdown className="dropdown__container">
             <Dropdown.Toggle id="dropdown-custom-components">Custom toggle</Dropdown.Toggle>
