@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-const initialState = 'OPEN'
-type IssueType = 'OPEN' | 'CLOSED'
+const initialState = { open: true, closed: false }
+type IssueType = { open: boolean, closed: boolean }
 
 const issueStatusSlice = createSlice({
     name: 'issueStatusFilter',
@@ -13,5 +13,5 @@ const issueStatusSlice = createSlice({
     }
 })
 
-export const {setIssueStatus } = issueStatusSlice.actions
+export const { setIssueStatus } = issueStatusSlice.actions
 export default issueStatusSlice.reducer
