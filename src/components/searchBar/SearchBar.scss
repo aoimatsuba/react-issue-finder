@@ -1,0 +1,21 @@
+.searchBar {
+  &__container {
+    position: relative;
+    width: 400px !important;
+    margin-right: 10px;
+  }
+
+  &__box {
+    width: 100% !important;
+  }
+  &__close {
+    fill: gray;
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px;
+    :hover {
+      fill: black;
+    }
+  }
+}

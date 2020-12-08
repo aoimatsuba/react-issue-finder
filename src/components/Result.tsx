@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { gql, useQuery } from "@apollo/client";
-import ResultItem from './ResultItem/ResultItem';
+import ResultItem from './resultItem/ResultItem';
 
 // const TOP_ISSUES = gql`
 //     query {
