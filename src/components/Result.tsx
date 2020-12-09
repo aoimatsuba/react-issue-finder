@@ -13,7 +13,7 @@ const gqlQuery = (searchText: string, issueStatus: IssueStatusQuery) => {
               node {
                 ... on Issue {
                   title
-                  bodyText
+                  bodyHTML
                   number
                     labels(first: 3) {
                         edges {
@@ -37,7 +37,7 @@ interface SearchData {
 }
 interface Issue {
     title: string;
-    bodyText: string;
+    bodyHTML: string;
     number: number;
     labels: {edges: Label[]};
 }

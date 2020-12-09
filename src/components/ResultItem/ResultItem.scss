@@ -4,6 +4,16 @@
     .card {
       display: flex;
     }
+    > * h2 {
+      font-size: 1.2rem;
+    }
+  }
+  &__title {
+    padding-bottom: 4px;
+    border-bottom: 1px rgba(0, 0, 0, 0.125) solid;
+  }
+  &__body {
+    padding: 0 4px 0 4px;
   }
   &__number {
     margin-right: 4px;

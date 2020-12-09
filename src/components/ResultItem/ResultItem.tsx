@@ -7,7 +7,7 @@ interface Label {
 }
 
 type Props = {
-    issue: {title: string, bodyText: string; number: number, labels: {edges: Label[]}}
+    issue: {title: string, bodyHTML: string; number: number, labels: {edges: Label[]}}
 }
 
 function ResultItem(props: Props) {
@@ -21,8 +21,10 @@ function ResultItem(props: Props) {
                 )}
             </Card.Header>
             <Card.Body>
-                <Card.Title>{props.issue.title}</Card.Title>
-                <Card.Text>{props.issue.bodyText}</Card.Text>
+                <Card.Title className="result-item__title">{props.issue.title}</Card.Title>
+                <Card.Text className="result-item__body">
+                    <div dangerouslySetInnerHTML={{__html: props.issue.bodyHTML}}/>
+                </Card.Text>
             <button type="button" className="btn btn-primary btn-sm">Expand Detail</button>
             </Card.Body>
         </Card>
