@@ -64,9 +64,15 @@ const Result = () => {
 
     if(loading) return <p>Chotto matte</p>
     if (error) return <p>ERROR {error}</p>
-    return data?.search?.edges?.map(edge => (
-        <ResultItem issue={edge.node} />
-    ))
+    return (
+        <div className="results__container">
+            {
+                data?.search?.edges?.map(edge => (
+                    <ResultItem issue={edge.node} />
+                ))
+            }
+        </div>
+    )
 }
 
 export default Result

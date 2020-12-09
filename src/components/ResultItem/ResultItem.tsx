@@ -13,7 +13,7 @@ type Props = {
 function ResultItem(props: Props) {
     return (   
         <div className= "result-item__container">
-        <Card style={{ width: '50rem', margin: 'auto' }}>
+        <Card>
             <Card.Header>
                 <span className="result-item__number">#{props.issue.number} </span>
                 {props.issue.labels?.edges.map(label => (

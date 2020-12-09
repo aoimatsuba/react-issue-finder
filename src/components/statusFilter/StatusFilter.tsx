@@ -14,10 +14,9 @@ const StatusFilter =() => {
     React.useEffect(() => {
         dispatch(setIssueStatus({open, closed}))
     })
-
     return (
-        <Dropdown className="dropdown__container">
-            <Dropdown.Toggle id="dropdown-custom-components">Custom toggle</Dropdown.Toggle>
+        <Dropdown className="dropdown__container" >
+            <Dropdown.Toggle variant="success" id="dropdown-custom-components">Issue Status</Dropdown.Toggle>
             <Dropdown.Menu >
                 <Dropdown.Item eventKey="1" onClick={() => setOpen(!open)}>
                     OPEN

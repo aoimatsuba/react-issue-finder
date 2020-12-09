@@ -1,6 +1,9 @@
 .result-item {
   &__container {
     margin: 12px 20px 12px 20px;
+    .card {
+      display: flex;
+    }
   }
   &__number {
     margin-right: 4px;

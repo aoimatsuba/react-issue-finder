@@ -7,9 +7,9 @@ import Result from "./components/Result";
 function App() {
   return (
     <Container>
-      <NavigationBar />
-      <Filters />
       <div className="App">
+        <NavigationBar />
+        <Filters />
         <Result />
       </div>
     </Container>
