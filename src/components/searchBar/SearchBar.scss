@@ -1,8 +1,11 @@
+.search-form {
+  display: flex;
+}
+
 .searchBar {
   &__container {
     position: relative;
-    width: 400px !important;
-    margin-right: 10px;
+    margin-right: 5px;
   }
 
   &__box {

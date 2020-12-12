@@ -26,7 +26,7 @@ const SearchBar = () => {
     }
 
     return (
-        <form className="form-inline">
+        <form className="search-form">
             <div className="searchBar__container">
                 <input value={inputText} className="form-control mr-sm-2 searchBar__box" type="text" onChange={e => handleInputChange(e.target.value)} onKeyDown={e => handleEnter(e)} placeholder="Search by text"/>
                 {showClose && <CloseIconSvg className="searchBar__close" onClick={() => handleInputChange('') }/> }

@@ -4,7 +4,6 @@ import {Provider} from 'react-redux'
 import App from "./App";
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from "@apollo/client";
 import {setContext} from '@apollo/client/link/context'
-import { createStore } from "redux";
 import store from "./redux/store";
 
 const httpLink = createHttpLink({

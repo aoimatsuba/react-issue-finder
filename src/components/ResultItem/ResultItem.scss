@@ -12,13 +12,34 @@
     padding-bottom: 4px;
     border-bottom: 1px rgba(0, 0, 0, 0.125) solid;
   }
+
   &__body {
     padding: 0 4px 0 4px;
   }
-  &__number {
-    margin-right: 4px;
-  }
-  &__label {
-    margin: auto 4px auto 4px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__numberAndLabels {
+      display: flex;
+      align-items: center;
+    }
+    &__number {
+      margin-right: 4px;
+    }
+    &__labels {
+      display: flex;
+      flex-wrap: wrap;
+      .label {
+        margin: 2px 4px 2px 4px;
+      }
+    }
+
+    &__expandLink {
+      min-width: 140px;
+      height: 35px;
+    }
   }
 }

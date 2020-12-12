@@ -15,7 +15,7 @@ const gqlQuery = (searchText: string, issueStatus: IssueStatusQuery) => {
                   title
                   bodyHTML
                   number
-                    labels(first: 3) {
+                    labels(first: 5) {
                         edges {
                             node {
                                 name

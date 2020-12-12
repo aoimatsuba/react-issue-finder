@@ -14,18 +14,22 @@ function ResultItem(props: Props) {
     return (   
         <div className= "result-item__container">
         <Card>
-            <Card.Header>
-                <span className="result-item__number">#{props.issue.number} </span>
-                {props.issue.labels?.edges.map(label => (
-                    <span className="badge badge-pill result-item__label" style={{backgroundColor: `#${label.node?.color}`}} >{label.node?.name}</span>)
-                )}
+            <Card.Header className="result-item__header">
+                <div className="result-item__header__numberAndLabels">
+                    <span className="result-item__header__number">#{props.issue.number} </span>
+                    <div className="result-item__header__labels">
+                        {props.issue.labels?.edges.map(label => (
+                            <span className="badge badge-pill label" style={{backgroundColor: `#${label.node?.color}`}} >{label.node?.name}</span>)
+                        )}
+                    </div>
+                </div>
+                <button type="button" className="result-item__header__expandLink btn btn-primary btn-sm">Open this issue</button>
             </Card.Header>
             <Card.Body>
                 <Card.Title className="result-item__title">{props.issue.title}</Card.Title>
                 <Card.Text className="result-item__body">
                     <div dangerouslySetInnerHTML={{__html: props.issue.bodyHTML}}/>
                 </Card.Text>
-            <button type="button" className="btn btn-primary btn-sm">Expand Detail</button>
             </Card.Body>
         </Card>
         </div>
