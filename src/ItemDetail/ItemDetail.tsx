@@ -1,20 +1,28 @@
 import { gql } from '@apollo/client';
 import { useQuery } from '@apollo/client/react';
 import * as React from 'react'
+import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom'
 import ResultItem from '../components/resultItem/ResultItem';
+import './ItemDetail.scss'
 
 interface Issue {
     title: string;
     bodyHTML: string;
     number: number;
     labels: {edges: Label[]};
+    comments: {edges: [{node: Comment}]}
 }
 
 interface Label {
     node: {name: string, color: string}
 }
 
+interface Comment {
+    author: {avatarUrl: string, login: string}
+    createdAt: string
+    bodyHTML: string
+}
 interface RepositoryData {
     repository: {issue: Issue}
 }
@@ -26,13 +34,23 @@ const query = (issueId: string) =>{ return gql`
                 title
                 bodyHTML
                 number
+                labels(first: 5) {
+                        edges {
+                            node {
+                                name
+                                color
+                            }
+                        }
+                    }
                 comments(first: 20) {
                     edges {
                         node {
                             author {
                                 avatarUrl
+                                login
                             }
-                            bodyText
+                            createdAt
+                            bodyHTML
                         }
                     }
                 }
@@ -48,7 +66,26 @@ const ItemDetail = () => {
     if(loading) return <p>Chotto matte</p>
     if (error) return <p>ERROR {error}</p>
     return(
-        data?.repository?.issue && <ResultItem issue={data?.repository.issue} isDetail={true}/>
+        data?.repository?.issue && (
+            <>
+                <ResultItem issue={data?.repository.issue} isDetail={true}/>
+                {data.repository.issue.comments.edges.map(comment => 
+                    (
+                        <Card className= "comment__container">
+                            <Card.Header className="comment__header">
+                                <img className="comment__user-icon rounded-circle" src={comment.node.author.avatarUrl} alt="userIcon"/>
+                                <span className="comment__author-name font-weight-bold ">{comment.node.author.login}</span>
+                                <span className=""> commented on {new Date(comment.node.createdAt).toDateString()}</span>
+                            </Card.Header>
+                            <Card.Body>
+                                <div dangerouslySetInnerHTML={{__html: comment.node.bodyHTML}}/>
+                            </Card.Body>
+                        </Card>
+                    )
+                )}
+            </>
+        )
+        
     )
 }
 

@@ -1,0 +1,17 @@
+.comment {
+  &__container {
+    margin: 12px 20px 12px 150px;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px 10px 20px;
+  }
+  &__user-icon {
+    width: 40px;
+    margin-right: 5px;
+  }
+  &__author-name {
+    margin: 5px;
+  }
+}
