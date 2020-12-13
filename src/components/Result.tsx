@@ -60,7 +60,7 @@ const Result = () => {
     const statusFilter = useSelector(
         (state: RootState) => state.issueStatus
     )
-    const {loading, error, data} = useQuery<SearchData, Issue>(gqlQuery(searchText, retrieveIssueStatus(statusFilter)));
+    const {loading, error, data} = useQuery<SearchData>(gqlQuery(searchText, retrieveIssueStatus(statusFilter)));
 
     if(loading) return <p>Chotto matte</p>
     if (error) return <p>ERROR {error}</p>
@@ -68,7 +68,7 @@ const Result = () => {
         <div className="results__container">
             {
                 data?.search?.edges?.map(edge => (
-                    <ResultItem issue={edge.node} />
+                    <ResultItem issue={edge.node} isDetail={false} />
                 ))
             }
         </div>

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './ResultItem.scss'
 
 interface Label {
@@ -7,7 +8,8 @@ interface Label {
 }
 
 type Props = {
-    issue: {title: string, bodyHTML: string; number: number, labels: {edges: Label[]}}
+    issue: {title: string, bodyHTML: string; number?: number, labels: {edges: Label[]}}
+    isDetail: boolean
 }
 
 function ResultItem(props: Props) {
@@ -23,7 +25,9 @@ function ResultItem(props: Props) {
                         )}
                     </div>
                 </div>
-                <button type="button" className="result-item__header__expandLink btn btn-primary btn-sm">Open this issue</button>
+                {!props.isDetail && (<Link to={`/detail/${props.issue.number}`} target="_blank">
+                    <button type="button" className="result-item__header__expandLink btn btn-primary btn-sm">Open this issue</button>
+                </Link>)}
             </Card.Header>
             <Card.Body>
                 <Card.Title className="result-item__title">{props.issue.title}</Card.Title>

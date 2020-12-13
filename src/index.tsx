@@ -5,6 +5,7 @@ import App from "./App";
 import { ApolloClient, ApolloProvider, InMemoryCache, createHttpLink } from "@apollo/client";
 import {setContext} from '@apollo/client/link/context'
 import store from "./redux/store";
+import { BrowserRouter } from "react-router-dom";
 
 const httpLink = createHttpLink({
   uri: "https://api.github.com/graphql",
@@ -29,7 +30,9 @@ ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <ApolloProvider client={client}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ApolloProvider>
     </React.StrictMode>
   </Provider>,
