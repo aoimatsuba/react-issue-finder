@@ -60,30 +60,39 @@ const query = (issueId: string) =>{ return gql`
     }
 `}
 
+const commments = (comments: [{node: Comment}]) => {
+    if (comments === undefined || comments.length < 1)  {
+        return (<div className="text-center m-5">Nobody has commented on this issue yet</div>)
+    } else {
+        return comments.map(comment => 
+            (
+                <Card className= "comment__container">
+                    <Card.Header className="comment__header">
+                        <img className="comment__user-icon rounded-circle" src={comment.node.author.avatarUrl} alt="userIcon"/>
+                        <span className="comment__author-name font-weight-bold ">{comment.node.author.login}</span>
+                        <span className=""> commented on {new Date(comment.node.createdAt).toDateString()}</span>
+                    </Card.Header>
+                    <Card.Body>
+                        <div dangerouslySetInnerHTML={{__html: comment.node.bodyHTML}}/>
+                    </Card.Body>
+                </Card>
+            )
+        )
+    }
+
+}
+
 const ItemDetail = () => {
     const  params = useParams<{id: string}>();
-    
     const {loading, error, data} = useQuery<RepositoryData>(query(params.id));
+
     if(loading) return <LoadingSpinner/>
     if (error) return <p>ERROR {error}</p>
     return(
         data?.repository?.issue && (
             <div className="item-detail__container">
                 <ResultItem issue={data?.repository.issue} isDetail={true}/>
-                {data.repository.issue.comments.edges.map(comment => 
-                    (
-                        <Card className= "comment__container">
-                            <Card.Header className="comment__header">
-                                <img className="comment__user-icon rounded-circle" src={comment.node.author.avatarUrl} alt="userIcon"/>
-                                <span className="comment__author-name font-weight-bold ">{comment.node.author.login}</span>
-                                <span className=""> commented on {new Date(comment.node.createdAt).toDateString()}</span>
-                            </Card.Header>
-                            <Card.Body>
-                                <div dangerouslySetInnerHTML={{__html: comment.node.bodyHTML}}/>
-                            </Card.Body>
-                        </Card>
-                    )
-                )}
+                {commments(data.repository.issue.comments.edges)}
             </div>
         )
         

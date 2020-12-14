@@ -65,6 +65,12 @@ const Result = () => {
 
     if(loading) return <LoadingSpinner/>
     if (error) return <p>ERROR {error}</p>
+
+    if (data?.search?.edges === undefined || data?.search?.edges.length < 1) {
+        return (
+            <div className="text-center m-5">No results matched your search.</div>
+        )
+    } else {
     return (
         <div className="results__container">
             {
@@ -73,7 +79,7 @@ const Result = () => {
                 ))
             }
         </div>
-    )
+    )}
 }
 
 export default Result
