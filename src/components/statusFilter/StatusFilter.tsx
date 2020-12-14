@@ -16,14 +16,14 @@ const StatusFilter =() => {
     })
     return (
         <Dropdown className="dropdown__container" >
-            <Dropdown.Toggle variant="success" id="dropdown-custom-components">Issue Status</Dropdown.Toggle>
+            <Dropdown.Toggle variant="" id="dropdown-custom-components">Issue Status</Dropdown.Toggle>
             <Dropdown.Menu >
                 <Dropdown.Item eventKey="1" onClick={() => setOpen(!open)}>
-                    OPEN
+                    Open
                     {open && <SelectedIconSvg className="dropdown__selected"/>}
                  </Dropdown.Item>
                 <Dropdown.Item eventKey="2" onClick={() => setClosed(!closed)}>
-                    CLOSED
+                    Closed
                     {closed && <SelectedIconSvg className="dropdown__selected"/>}
                 </Dropdown.Item>
             </Dropdown.Menu>

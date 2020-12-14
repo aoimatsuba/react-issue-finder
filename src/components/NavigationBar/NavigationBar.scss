@@ -1,3 +1,9 @@
-.navigation__search {
-  width: 400px !important;
+.navbar {
+  &__container {
+    background-color: rgb(36, 41, 46);
+    height: 80px;
+  }
+  &__title {
+    color: white;
+  }
 }

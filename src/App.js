@@ -8,19 +8,21 @@ import ItemDetail from "./ItemDetail/ItemDetail";
 
 function App() {
   return (
-    <Container>
-      <Switch>
-        <Route path="/" component={Home} exact />
-        <Route path="/detail/:id" component={ItemDetail} />
-      </Switch>
-    </Container>
+    <>
+      <NavigationBar />
+      <Container>
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/detail/:id" component={ItemDetail} />
+        </Switch>
+      </Container>
+    </>
   );
 }
 
 const Home = () => {
   return (
     <div className="App">
-      <NavigationBar />
       <Filters />
       <Result />
     </div>

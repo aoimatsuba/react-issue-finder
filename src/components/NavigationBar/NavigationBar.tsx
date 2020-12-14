@@ -3,8 +3,8 @@ import './NavigationBar.scss'
 
 function NavigationBar() {
     return (
-        <div className="navbar navbar-light" style={{backgroundColor: "#e3f2fd"}}>
-            <div className="navbar-brand">React Issue Finder</div>
+        <div className="navbar navbar__container">
+            <div className="navbar-brand navbar__title">React Issue Finder</div>
         </div>
     )
 }

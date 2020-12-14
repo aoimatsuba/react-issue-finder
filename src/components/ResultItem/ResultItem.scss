@@ -37,9 +37,27 @@
       }
     }
 
-    &__expandLink {
-      min-width: 140px;
-      height: 35px;
+    a {
+      z-index: 1;
+      .result-item__header__expandLink {
+        min-width: 120px;
+        height: 40px;
+      }
     }
+  }
+}
+
+.collapse:not(.show) {
+  height: 15rem !important;
+  overflow-y: hidden;
+  display: block !important;
+  :before {
+    content: "";
+    width: 100%;
+    height: 85%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: linear-gradient(rgba(255, 255, 255, 0) 350px, white);
   }
 }

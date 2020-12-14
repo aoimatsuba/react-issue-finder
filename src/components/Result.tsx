@@ -3,6 +3,7 @@ import { gql, useQuery } from "@apollo/client";
 import ResultItem from './resultItem/ResultItem';
 import { RootState } from '../redux/rootReducer';
 import { useSelector } from 'react-redux';
+import LoadingSpinner from './Loading/LoadingSpinner';
 
 const gqlQuery = (searchText: string, issueStatus: IssueStatusQuery) => { 
     return gql`
@@ -62,7 +63,7 @@ const Result = () => {
     )
     const {loading, error, data} = useQuery<SearchData>(gqlQuery(searchText, retrieveIssueStatus(statusFilter)));
 
-    if(loading) return <p>Chotto matte</p>
+    if(loading) return <LoadingSpinner/>
     if (error) return <p>ERROR {error}</p>
     return (
         <div className="results__container">

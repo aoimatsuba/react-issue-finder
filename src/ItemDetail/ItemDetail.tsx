@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client/react';
 import * as React from 'react'
 import { Card } from 'react-bootstrap';
 import { useParams } from 'react-router-dom'
+import LoadingSpinner from '../components/Loading/LoadingSpinner';
 import ResultItem from '../components/resultItem/ResultItem';
 import './ItemDetail.scss'
 
@@ -63,11 +64,11 @@ const ItemDetail = () => {
     const  params = useParams<{id: string}>();
     
     const {loading, error, data} = useQuery<RepositoryData>(query(params.id));
-    if(loading) return <p>Chotto matte</p>
+    if(loading) return <LoadingSpinner/>
     if (error) return <p>ERROR {error}</p>
     return(
         data?.repository?.issue && (
-            <>
+            <div className="item-detail__container">
                 <ResultItem issue={data?.repository.issue} isDetail={true}/>
                 {data.repository.issue.comments.edges.map(comment => 
                     (
@@ -83,7 +84,7 @@ const ItemDetail = () => {
                         </Card>
                     )
                 )}
-            </>
+            </div>
         )
         
     )

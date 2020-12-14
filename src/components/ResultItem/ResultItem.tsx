@@ -1,5 +1,6 @@
 import * as React from 'react'
-import { Card } from 'react-bootstrap';
+import { useState } from 'react';
+import { Button, Card, Collapse } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import './ResultItem.scss'
 
@@ -13,6 +14,9 @@ type Props = {
 }
 
 function ResultItem(props: Props) {
+
+    const [open, setOpen] = useState(false);
+    
     return (   
         <div className= "result-item__container">
         <Card>
@@ -26,14 +30,22 @@ function ResultItem(props: Props) {
                     </div>
                 </div>
                 {!props.isDetail && (<Link to={`/detail/${props.issue.number}`} target="_blank">
-                    <button type="button" className="result-item__header__expandLink btn btn-primary btn-sm">Open this issue</button>
+                    <Button className="result-item__header__expandLink" variant="outline-info">Go to Detail</Button>
                 </Link>)}
             </Card.Header>
             <Card.Body>
                 <Card.Title className="result-item__title">{props.issue.title}</Card.Title>
+                {!props.isDetail ? (<Collapse in={open}>
+                    <Card.Text className="result-item__body">
+                        <div dangerouslySetInnerHTML={{__html: props.issue.bodyHTML}}/>
+                    </Card.Text>
+                </Collapse>) : (
                 <Card.Text className="result-item__body">
-                    <div dangerouslySetInnerHTML={{__html: props.issue.bodyHTML}}/>
-                </Card.Text>
+                        <div dangerouslySetInnerHTML={{__html: props.issue.bodyHTML}}/>
+                    </Card.Text>)}
+                {!props.isDetail && !open && (<Button onClick={() => setOpen(!open)} variant="link" aria-controls="example-collapse-text" aria-expanded={open}>
+                    See More
+                </Button>)}
             </Card.Body>
         </Card>
         </div>
