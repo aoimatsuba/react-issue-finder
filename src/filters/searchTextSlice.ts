@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const initialState = ''
 const searchTextSlice = createSlice({
@@ -7,10 +7,10 @@ const searchTextSlice = createSlice({
     reducers: {
         setSearchText(state, action: PayloadAction<string>) {
             return action.payload
-        }
-    }
+        },
+    },
 })
 
-export const {setSearchText} = searchTextSlice.actions
+export const { setSearchText } = searchTextSlice.actions
 
 export default searchTextSlice.reducer

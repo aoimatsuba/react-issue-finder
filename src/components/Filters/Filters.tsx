@@ -1,17 +1,15 @@
 import * as React from 'react'
-import SearchBar from '../searchBar/SearchBar';
-import StatusFilter from '../statusFilter/StatusFilter';
+import SearchBar from '../searchBar/SearchBar'
+import StatusFilter from '../statusFilter/StatusFilter'
 import './Filters.scss'
 
-function Filters() {
+const Filters: React.FunctionComponent = () => {
     return (
         <div className="card filter__container">
-            <SearchBar/>
-            <StatusFilter/>
+            <SearchBar />
+            <StatusFilter />
         </div>
     )
 }
-
-
 
 export default Filters

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import './NavigationBar.scss'
 
-function NavigationBar() {
+const NavigationBar: React.FunctionComponent = () => {
     return (
         <div className="navbar navbar__container">
             <div className="navbar-brand navbar__title">React Issue Finder</div>

@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { useState } from 'react';
-import { Button } from 'react-bootstrap';
+import { useState } from 'react'
+import { Button } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
-import { setSearchText } from '../../filters/searchTextSlice';
+import { setSearchText } from '../../filters/searchTextSlice'
 import { ReactComponent as CloseIconSvg } from '../../assets/close_icon.svg'
 import './SearchBar.scss'
 
-const SearchBar = () => {
+const SearchBar: React.FunctionComponent = () => {
     const dispatch = useDispatch()
     const [inputText, setInputText] = useState('')
     const [showClose, setShowClose] = useState(false)
@@ -19,7 +19,7 @@ const SearchBar = () => {
     }
 
     const handleEnter = (e: React.KeyboardEvent<HTMLElement>) => {
-        if(e.key === 'Enter') {
+        if (e.key === 'Enter') {
             e.preventDefault()
             handleSearchButtonClick()
         }
@@ -28,13 +28,21 @@ const SearchBar = () => {
     return (
         <form className="search-form">
             <div className="searchBar__container">
-                <input value={inputText} className="form-control mr-sm-2 searchBar__box" type="text" onChange={e => handleInputChange(e.target.value)} onKeyDown={e => handleEnter(e)} placeholder="Search by text"/>
-                {showClose && <CloseIconSvg className="searchBar__close" onClick={() => handleInputChange('') }/> }
+                <input
+                    value={inputText}
+                    className="form-control mr-sm-2 searchBar__box"
+                    type="text"
+                    onChange={(e) => handleInputChange(e.target.value)}
+                    onKeyDown={(e) => handleEnter(e)}
+                    placeholder="Search by text"
+                />
+                {showClose && <CloseIconSvg className="searchBar__close" onClick={() => handleInputChange('')} />}
             </div>
-            <Button variant="success" onClick={() => handleSearchButtonClick() }>Search</Button>
+            <Button variant="success" onClick={() => handleSearchButtonClick()}>
+                Search
+            </Button>
         </form>
     )
 }
-
 
 export default SearchBar

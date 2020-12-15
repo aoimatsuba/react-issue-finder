@@ -6,31 +6,31 @@ import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { setIssueStatus } from '../../filters/issueStatusSlice'
 
-const StatusFilter =() => {
+const StatusFilter: React.FunctionComponent = () => {
     const dispatch = useDispatch()
     const [open, setOpen] = useState(true)
     const [closed, setClosed] = useState(false)
 
     React.useEffect(() => {
-        dispatch(setIssueStatus({open, closed}))
+        dispatch(setIssueStatus({ open, closed }))
     })
     return (
-        <Dropdown className="dropdown__container" >
-            <Dropdown.Toggle variant="" id="dropdown-custom-components">Issue Status</Dropdown.Toggle>
-            <Dropdown.Menu >
+        <Dropdown className="dropdown__container">
+            <Dropdown.Toggle variant="" id="dropdown-custom-components">
+                Issue Status
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
                 <Dropdown.Item eventKey="1" onClick={() => setOpen(!open)}>
                     Open
-                    {open && <SelectedIconSvg className="dropdown__selected"/>}
-                 </Dropdown.Item>
+                    {open && <SelectedIconSvg className="dropdown__selected" />}
+                </Dropdown.Item>
                 <Dropdown.Item eventKey="2" onClick={() => setClosed(!closed)}>
                     Closed
-                    {closed && <SelectedIconSvg className="dropdown__selected"/>}
+                    {closed && <SelectedIconSvg className="dropdown__selected" />}
                 </Dropdown.Item>
             </Dropdown.Menu>
         </Dropdown>
     )
 }
-
-
 
 export default StatusFilter
