@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client/react'
 import * as React from 'react'
 import { Card } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
-import LoadingSpinner from '../components/Loading/LoadingSpinner'
+import LoadingSpinner from '../components/loading/LoadingSpinner'
 import ResultItem from '../components/resultItem/ResultItem'
 import './ItemDetail.scss'
 

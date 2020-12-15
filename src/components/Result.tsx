@@ -3,7 +3,7 @@ import { gql, useQuery } from '@apollo/client'
 import ResultItem from './resultItem/ResultItem'
 import { RootState } from '../redux/rootReducer'
 import { useSelector } from 'react-redux'
-import LoadingSpinner from './Loading/LoadingSpinner'
+import LoadingSpinner from './loading/LoadingSpinner'
 
 const gqlQuery = (searchText: string, issueStatus: IssueStatusQuery) => {
     return gql`
