@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import Filters from './components/filters/Filters'
 import NavigationBar from './components/navigationBar/NavigationBar'
 import Result from './components/Result'
-import ItemDetail from './ItemDetail/ItemDetail'
+import ItemDetail from './components/ItemDetail/ItemDetail'
 
 const App: React.FunctionComponent = () => {
     return (

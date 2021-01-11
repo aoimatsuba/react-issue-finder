@@ -12,10 +12,11 @@ const httpLink = createHttpLink({
 })
 
 const authLink = setContext((_, { headers }) => {
+    const token = process.env.REACT_APP_GITHUB_TOKEN
     return {
         headers: {
             ...headers,
-            authorization: `Bearer eee904a11a487dfcb6a2a9fe83d197fe828d7484`, // This token has only given a permission to view public repos
+            authorization: `Bearer ${token}`,
         },
     }
 })
