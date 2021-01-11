@@ -15,7 +15,7 @@ const authLink = setContext((_, { headers }) => {
     return {
         headers: {
             ...headers,
-            authorization: `Bearer e97142affad59e489fe1cefa6172cc25e0d3a6ee`, // This token has only given a permission to view public repos
+            authorization: `Bearer eee904a11a487dfcb6a2a9fe83d197fe828d7484`, // This token has only given a permission to view public repos
         },
     }
 })
